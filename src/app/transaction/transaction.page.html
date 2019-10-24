@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title  color="primary">Faire une transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #a="ngForm" (ngSubmit)="onSubmitForm(a.value)" >
+    <ion-item>
+      <ion-label position="floating">Type de transaction</ion-label>
+      <ion-select value="Type" okText="Okay" cancelText="Dismiss" required>
+        <ion-select-option value="envoi">Envoi</ion-select-option>
+        <ion-select-option value="retrait">Blonde</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">Code de la transaction</ion-label>
+      <ion-input type="number" name="CodeTransaction" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">MOntant</ion-label>
+      <ion-input type="number" name="Montant" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  position="floating">Numéro de l'expéditeur</ion-label>
+      <ion-input type="number" name="CodeTransaction" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">Numéro du destinataire</ion-label>
+      <ion-input type="number" name="NumeroDestinataire" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">Numéro de l'expéditeur</ion-label>
+      <ion-input type="number" name="CodeTransaction" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">CNI du destinataire</ion-label>
+      <ion-input type="number" name="CNIdestinataire" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">Nom complet de l'expediteur</ion-label>
+      <ion-input type="number" name="NomCompletExpediteur" ngModel ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  position="floating">Nom complet du destinataire</ion-label>
+      <ion-input type="number" name="NomCompletExpediteur" ngModel ></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">Enregistrer</ion-button>
+  </form>
+</ion-content> 

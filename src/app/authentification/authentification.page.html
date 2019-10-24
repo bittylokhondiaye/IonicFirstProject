@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title  color="primary">authentification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #a="ngForm" (ngSubmit)="onLogin(a.value)" >
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" name="username" ngModel placeholder="Votre Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" name="password" ngModel placeholder="Votre Mot de passe"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">Login</ion-button>
+  </form>
+</ion-content>
