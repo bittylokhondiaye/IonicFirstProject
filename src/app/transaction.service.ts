@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ListeTransation } from './listeTransaction';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
+  private transactionurl:string = "http://localhost:8000/api/makeTransaction";
+  private listeurl:string= "http://localhost:8000/api/listerTransaction/";
+  constructor(private http:HttpClient ) { }
 
-  constructor() { }
+  postTransaction(donnees) {
+    let  headers = new HttpHeaders().set('Authorization', "Bearer " + localStorage.getItem('token'));
+    return this.http.post(this.transactionurl,donnees,{headers});
+  }
+  listerTransaction() :Observable<ListeTransation[]> {
+    let  headers = new HttpHeaders().set('Authorization', "Bearer " + localStorage.getItem('token'));
+   return  this.http.get<ListeTransation[]>(this.listeurl,{headers},);
+  }
+
 }

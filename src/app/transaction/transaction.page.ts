@@ -17,25 +17,64 @@ export class TransactionPage implements OnInit {
   formBuilder= new FormBuilder;
   private transaction=[];
   afficher: boolean=true;
+  echange:boolean=true;
+  nonEchange:boolean=true;
+  Type:String;
   constructor(private transService:TransactionService,private http:HttpClient) { }
 
   ngOnInit() {
-    }
+    this.initForm();
+  }
+
   initForm() {
-    this.transactionForm = this.formBuilder.group({
-      Type:['',Validators] ,
-      CodeTransaction:['',Validators],
-      Montant:['',Validators.required],
-      NumeroExpediteur:['',Validators],
-      NumeroDestinataire:['',Validators],
-      CNIdestinataire:['',Validators],
-      NomCompletExpediteur:['',Validators],
-      NomCompletDestinataire:['',Validators]
-    });}
+    this.transactionForm =new FormGroup({
+      Type : new FormControl(),
+      CodeTransaction : new FormControl(),
+      Montant : new FormControl(),
+      NumeroExpediteur : new FormControl(),
+      NumeroDestinataire : new FormControl(),
+      CNIdestinataire : new FormControl(),
+      NomCompletExpediteur : new FormControl(),
+      NomCompletDestinataire : new FormControl()
+    });
+  }
 
     onSubmitForm (){
+      const formValue = this.transactionForm.value;
+    const newTransaction = new Transaction(  
+      this.Type+'',
+      formValue['CodeTransaction'],
+      formValue['Montant'],
+      formValue['NumeroExpediteur'],
+      formValue['NumeroDestinataire'],
+      formValue['CNIdestinataire'],
+      formValue['NomCompletExpediteur'],
+      formValue['NomCompletDestinataire'],
+    ); 
+    console.log(newTransaction);
+    this.transService.postTransaction(newTransaction).subscribe(res => {
+      console.log(res)
+    },err=>{
+      console.log(err);
+  });
     }
   
-
+    envoi(){
+      this.echange=false;
+      this.nonEchange=true;
+      const formValue = this.transactionForm.value;
+      formValue['Type']="envoi";
+      this.Type="envoi";
+    }
+  
+    retrait(){
+      this.echange=true;
+      this.nonEchange=false;
+      const formValue = this.transactionForm.value;
+      formValue['Type']="retrait";
+      this.Type="retrait";
+    }
 
 }
+
+

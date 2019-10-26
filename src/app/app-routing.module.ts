@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'authentification', loadChildren: './authentification/authentification.module#AuthentificationPageModule' },
   { path: 'transaction', loadChildren: './transaction/transaction.module#TransactionPageModule' },
   { path: 'lister-transaction', loadChildren: './lister-transaction/lister-transaction.module#ListerTransactionPageModule' },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
 ];
 
 @NgModule({

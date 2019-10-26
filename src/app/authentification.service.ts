@@ -52,4 +52,8 @@ export class AuthentificationService {
   isAuthenticated(){
     return this.roles[0] && (this.isAdmin || this.isUser || this.isSuperAdmin );
   }
+
+  logout(){
+    return localStorage.removeItem('token');
+  }
 }
