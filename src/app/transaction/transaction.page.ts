@@ -75,6 +75,10 @@ export class TransactionPage implements OnInit {
       this.Type="retrait";
     }
 
+    lister(){
+      this.router.navigateByUrl(['/lister-transaction']);
+    }
+
 }
 
 

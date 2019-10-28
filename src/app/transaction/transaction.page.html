@@ -1,3 +1,6 @@
+<!--<div> 
+  <app-menu></app-menu>
+</div>-->
 <ion-header>
   <ion-toolbar>
     <ion-title  color="primary">Faire une transaction</ion-title>
@@ -5,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+    <div>
+        <ion-button color="light" (click)="lister()" >lister</ion-button>
+        </div>
   <form  (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm" >
       <div id="r1">
           <ion-item>

@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>listerTransaction</ion-title>
+    <ion-title>liste de mes transactions</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <form #t="ngForm" (ngSubmit)="transactionDate(t.value)" >
+        <ion-item>
+          <ion-label position="floating">Date1</ion-label>
+          <ion-input type="date" name="date1" ngModel min="2019-08-17" ></ion-input>
+          <ion-label position="floating">Date2</ion-label>
+          <ion-input type="date" name="date2" ngModel min="2019-08-17"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit">Rechercher</ion-button>
+      </form>
+    <ion-list>
+        <ion-item *ngFor="let transactions of transaction" >
+          <strong> Montant:{{transactions.Montant}}</strong>
+          <br><h6>{{transactions.DateTransaction | date: 'dd/MM/yyyy'}}</h6>
+        </ion-item>
+    </ion-list>     
 </ion-content>
